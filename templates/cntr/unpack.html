@@ -1,0 +1,54 @@
+{% extends 'public/_base.html' %}
+
+{% block header_content %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center mt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5>拆櫃查詢</h5>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <div class="input-group-text" id="cntrno" style="width: 4rem;">櫃號</div>
+                            <input type="text" class="form-control" 
+                                placeholder="" aria-label="container no" aria-describedby="btnGroupAddon">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-text" id="cntrno" style="width: 4rem;">DO</div>
+                            <input type="text" class="form-control" 
+                                placeholder="" aria-label="DO no" aria-describedby="btnGroupAddon">
+                        </div>
+                        <div class="form-group text-end">
+                            <button class="btn btn-primary">查詢</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function r1Click() {
+        document.getElementById("cntrno").disabled = false;
+        document.getElementById("cntrno").focus();
+        document.getElementById("vslseq").disabled = true;
+        document.getElementById("so").disabled = true;
+    }
+
+    function r2Click() {
+        document.getElementById("cntrno").disabled = true;
+        document.getElementById("vslseq").disabled = false;
+        document.getElementById("vslseq").focus();
+        document.getElementById("so").disabled = false;
+    }
+</script>
+
+{% endblock %}

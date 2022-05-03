@@ -1,0 +1,58 @@
+{% extends 'public/_base.html' %}
+
+{% block header_content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+<script>
+    function import_search(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "/cntr/import_search_m",
+            method: "POST",
+            data: {
+                'csrfmiddlewaretoken': $("[name=csrfmiddlewaretoken]").val(),
+                'cntrno': $("#cntrno").val()
+            }
+        })
+        .done(function(data) {
+            console.log(data);
+        });
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center mt-5">
+        <div class="col-md-8">
+            <div class="card border-dark">
+                <div class="card-header">進口查詢</div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <div class="input-group-text" id="cntrno" style="width: 4rem;">櫃號</div>
+                            <input type="text" class="form-control" 
+                                placeholder="" aria-label="container no" aria-describedby="btnGroupAddon">
+                        </div>
+                        <div class="form-gorup text-end">
+                            <button class="btn btn-primary" type="submit" onclick="import_search(event)">查詢</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="resultMain" name="resultMain"></div>
+
+<div id="resultDetail" name="resultMain"></div>
+
+{% load static %}
+<script href="{% static 'js/cntr.js' %}"></script>
+
+{% endblock %}

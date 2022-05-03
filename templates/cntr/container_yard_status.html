@@ -1,0 +1,46 @@
+{% extends 'public/_base.html' %}
+
+{% block header_content %}
+<style>
+	.counter {
+		font-size: 5rem;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-12 mt-5">
+			<div class='row justify-content-center mb-5'>
+				<div class='col-md-3 mb-3'>
+					<div class='card'>
+						<div class='card-header'>場內交櫃候車數</div>
+						<div class='card-body'>
+							<div class='counter text-center text-success'>
+								{{waiting4putdown}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='col-md-3 mb-3'>
+					<div class='card'>
+						<div class='card-header'>場內領櫃候車數</div>
+						<div class='card-body'>
+							<div class='counter text-center text-success'>
+								{{waiting4pickup}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class='col-md-6'>
+					<div class='text-start fw-bold'>更新時間：{{update_at}}</div>
+					<div class='text-start fw-bold'>候車數僅供參考，櫃場內會依現場作業隨時更新!</div>
+				</div>        
+			</div> 
+		</div>
+	</div>
+</div>
+{% endblock %}

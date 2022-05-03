@@ -1,0 +1,39 @@
+{% extends 'public/_base.html' %}
+
+{% block header_content%}
+<style>
+    .nounderline {
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% if news %}
+<div class="container" style="margin-top: 3rem;">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-8">
+            
+            <h4 class="mb-3">
+                {% if news.tag == 1 %}
+                    <span class="badge bg-primary badge-primary">公告</span>
+                {% elif news.tag == 2 %}
+                    <span class="badge bg-success badge-success">人才招募</span>
+                {% elif news.tag == 3 %}
+                    <span class="badge bg-info badge-info">採購公告</span>
+                {% endif %}
+            </h4>
+            
+            <div class="row mb-3">
+                <h5>{{news.title}}</h5>
+            </div>
+            <div class="row mb-3">
+                <p>{{news.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
